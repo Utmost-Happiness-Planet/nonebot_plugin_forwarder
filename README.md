@@ -26,7 +26,7 @@
 
 ### ⭐功能
 
-准确的说。她可以将若干个源群(Source Groups)中满足特定规则的消息转发到若干个目标群(Destinated Groups)中。
+准确的说。她可以将若干个源群(Source Groups)中满足特定规则的消息转发到若干个目标群(Destination Groups)中。
 
 ### 🎞用途
 
