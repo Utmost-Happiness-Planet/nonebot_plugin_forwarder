@@ -41,8 +41,8 @@
 ```python
 forwarder_source_group = ["<QQ群号>"]  # 源信息群
 forwarder_dest_group = ["<QQ群号>"]  # 目标群
-forwarder_prefix = ["<前缀格式>"]  # 触发转发的消息前缀
-forwarder_explict = ["<QQ号>"]  # 指定只有特定人消息被转发
+forwarder_prefix = ["<前缀格式>"]  # 触发转发的消息前缀 ( [""] 则为全部转发)
+forwarder_explict = ["<QQ号>"]  # 指定只有特定人消息被转发 ( [""] 则为全部转发)
 ```
 
 按常规方法安装插件即可。
