@@ -1,7 +1,8 @@
-from nonebot import on_message, logger
-from nonebot.adapters.cqhttp import GroupMessageEvent, Bot
+from nonebot import on_message
+from nonebot.adapters.onebot.v11 import GroupMessageEvent, Bot
 from nonebot.rule import startswith
 from nonebot.typing import T_State
+from nonebot.params import State
 import asyncio
 
 from .config import forwarder_explict, forwarder_prefix, forwarder_dest_group, forwarder_source_group
@@ -15,7 +16,7 @@ async def send_meg(bot: Bot, group_id: str, msg: str):
 
 
 @msg_matcher.handle()
-async def _(bot: Bot, event: GroupMessageEvent, state: T_State):
+async def _(bot: Bot, event: GroupMessageEvent, state: T_State = State()):
     if str(event.group_id) in forwarder_source_group:
         if forwarder_explict:
             flag = forwarder_explict[0] == "" or str(event.user_id) in forwarder_explict
