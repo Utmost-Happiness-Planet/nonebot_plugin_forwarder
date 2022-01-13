@@ -2,6 +2,9 @@
 
   # Forwarder
   
+  # ⚠未做2.0.0-beta1适配⚠
+  请等待适配后再使用
+  
   ✨ 一个基于 [NoneBot2](https://github.com/nonebot/nonebot2) 的插件, 她可以将甲群的消息转发到乙群。 ✨
   
 </div>
