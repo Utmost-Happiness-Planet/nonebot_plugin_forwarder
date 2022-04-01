@@ -2,6 +2,8 @@
 
   # Forwarder
   
+  # 该插件存在一些意料之外的故障。最好不要使用。等待修复。
+  
   ✨ 一个基于 [NoneBot2](https://github.com/nonebot/nonebot2) 的插件, 她可以将甲群的消息转发到乙群。 ✨
   
 </div>
