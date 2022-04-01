@@ -1,4 +1,4 @@
-from nonebot import on_message
+from nonebot import on_message, logger
 from nonebot.adapters.onebot.v11 import GroupMessageEvent, Bot
 from nonebot.rule import startswith
 from nonebot.typing import T_State
@@ -26,5 +26,6 @@ async def _(bot: Bot, event: GroupMessageEvent, state: T_State = State()):
             # logger.debug("准备转发")
             if forwarder_dest_group[0] != "":
                 msg = event.message
+                # logger.debug(msg)
                 tasks = [send_meg(bot, gid, msg) for gid in forwarder_dest_group]
                 await asyncio.wait(tasks)
