@@ -2,8 +2,6 @@
 
   # Forwarder
   
-  # 该插件存在一些意料之外的故障。最好不要使用。等待修复。
-  
   ✨ 一个基于 [NoneBot2](https://github.com/nonebot/nonebot2) 的插件, 她可以将甲群的消息转发到乙群。 ✨
   
 </div>
@@ -19,7 +17,7 @@
   </a>
   
   <a href="">
-    <img src="https://img.shields.io/badge/release-v1.0-orange">
+    <img src="https://img.shields.io/badge/release-v2.0-orange">
   </a>
   
 </p>
@@ -33,8 +31,7 @@
 ### 🎞用途
 
 1. 多群广播
-2. 做一个无情的转发机器
-3. ~~视奸某人~~
+2. 无情的转发机器
 
 ### 📕用法
 
@@ -49,6 +46,9 @@ forwarder_explict = ["<QQ号>"]  # 指定只有特定人消息被转发 ( [""] �
 
 按常规方法安装插件即可。
 
+### 已知BUG
+
+形如 `<三个汉字><图片>` 的信息无法转发，原因未知。
 
 ### 🎈致谢
 

@@ -1,26 +1,17 @@
 from nonebot import get_driver, logger
 
-config = get_driver().config
+config = get_driver().config.dict()
 
-if not hasattr(config, "forwarder_source_group"):
-    forwarder_source_group = [""]
-    logger.info("未检测到forwarder_source_group配置")
-else:
-    forwarder_source_group = config.forwarder_source_group
+if 'forwarder_source_group' not in config:
+    logger.warning('[转发姬] 未发现配置项 `forwarder_source_group` , 采用默认值: []')
+if 'forwarder_dest_group' not in config:
+    logger.warning('[转发姬] 未发现配置项 `forwarder_dest_group` , 采用默认值: []')
+if 'forwarder_prefix' not in config:
+    logger.warning('[转发姬] 未发现配置项 `forwarder_prefix` , 采用默认值: [""]')
+if 'forwarder_explict' not in config:
+    logger.warning('[转发姬] 未发现配置项 `forwarder_explict` , 采用默认值: [""]')
 
-if not hasattr(config, "forwarder_dest_group"):
-    forwarder_dest_group = [""]
-    logger.info("未检测到forwarder_dest_group配置")
-else:
-    forwarder_dest_group = config.forwarder_dest_group
-
-if not hasattr(config, "forwarder_prefix"):
-    forwarder_prefix = [""]
-    logger.info("未检测到forwarder_prefix配置，默认为['']")
-else:
-    forwarder_prefix = config.forwarder_prefix
-if not hasattr(config, "forwarder_explict"):
-    forwarder_explict = [""]
-    logger.info("未检测到forwarder_explict配置，默认为['']")
-else:
-    forwarder_explict = config.forwarder_explict
+forwarder_source_group = config.get('forwarder_source_group', [])
+forwarder_dest_group = config.get('forwarder_dest_group', [])
+forwarder_prefix = config.get('forwarder_prefix', [""])
+forwarder_explict = config.get('forwarder_explict', [""])

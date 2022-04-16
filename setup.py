@@ -5,7 +5,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setup(
     name="nonebot-plugin-forwarder",
-    version="2.0.2",
+    version="2.0.3",
     author="Kl1nge5",
     description="A plugin based on NoneBot2, which can broadcast message from Source Groups to Destination Groups.",
     long_description=long_description,
