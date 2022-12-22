@@ -1,10 +1,7 @@
-import logging
-
 from nonebot import on_message, logger
 from nonebot.adapters.onebot.v11 import GroupMessageEvent, Bot
 from nonebot.rule import startswith
-from nonebot.typing import T_State
-from nonebot.params import State
+
 import asyncio
 
 from .config import forwarder_explict, forwarder_prefix, forwarder_dest_group, forwarder_source_group
