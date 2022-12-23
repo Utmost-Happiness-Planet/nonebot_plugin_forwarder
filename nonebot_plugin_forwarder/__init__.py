@@ -22,7 +22,10 @@ async def _(bot: Bot, event: GroupMessageEvent):
         if flag and forwarder_dest_group[0] != "":
             msg = str(event.message)
             if forwarder_show_sender == "card":
-                msg = str(event.sender.card) + ": " + msg
+                if event.sender.card == "":
+                    msg = str(event.sender.nickname) + ": " + msg
+                else:
+                    msg = str(event.sender.card) + ": " + msg
             elif forwarder_show_sender == "nickname":
                 msg = str(event.sender.nickname) + ": " + msg
             logger.debug(f"欲转发消息: {msg} | 来源: {event.group_id}")
