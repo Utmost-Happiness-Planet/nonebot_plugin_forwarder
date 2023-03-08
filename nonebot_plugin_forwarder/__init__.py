@@ -1,10 +1,21 @@
 from nonebot import on_message, logger
 from nonebot.adapters.onebot.v11 import GroupMessageEvent, Bot
 from nonebot.rule import startswith
+from nonebot import get_driver
+
+
+from .config import Config
+
 
 import asyncio
 
-from .config import forwarder_explict, forwarder_prefix, forwarder_dest_group, forwarder_source_group, forwarder_show_sender
+plugin_config = Config.parse_obj(get_driver().config)
+forwarder_source_group=plugin_config.forwarder_source_group
+forwarder_dest_group=plugin_config.forwarder_dest_group
+forwarder_prefix=plugin_config.forwarder_prefix
+forwarder_explict=plugin_config.forwarder_explict
+forwarder_dest_group=forwarder_dest_group
+forwarder_show_sender=plugin_config.forwarder_show_sender
 
 rule = startswith(forwarder_prefix)
 msg_matcher = on_message(rule, priority=10, block=False)
