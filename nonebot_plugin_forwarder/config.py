@@ -13,7 +13,7 @@ class Config(BaseModel, extra=Extra.ignore):
     def __init__(self, **data):
         super().__init__(**data)
         for field in self.__fields__.values():
-            if field.required and field.name not in data:
+            if field.name not in data:
                 default_value = getattr(self, field.name)
                 logger.warning(
                     f"[转发姬] 未发现配置项 {field.name} , 采用默认值: {default_value}")
