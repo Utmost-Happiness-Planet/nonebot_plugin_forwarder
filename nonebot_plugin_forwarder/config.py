@@ -1,21 +1,19 @@
-from nonebot import get_driver, logger
-
-config = get_driver().config.dict()
-
-if 'forwarder_source_group' not in config:
-    logger.warning('[转发姬] 未发现配置项 `forwarder_source_group` , 采用默认值: []')
-if 'forwarder_dest_group' not in config:
-    logger.warning('[转发姬] 未发现配置项 `forwarder_dest_group` , 采用默认值: []')
-if 'forwarder_prefix' not in config:
-    logger.warning('[转发姬] 未发现配置项 `forwarder_prefix` , 采用默认值: [""]')
-if 'forwarder_explict' not in config:
-    logger.warning('[转发姬] 未发现配置项 `forwarder_explict` , 采用默认值: [""]')
-if 'forwarder_show_sender' not in config:
-    logger.warning('[转发姬] 未发现配置项 `forwarder_show_sender` , 采用默认值: False')
+from nonebot import logger
+from pydantic import BaseModel, Extra
 
 
-forwarder_source_group = config.get('forwarder_source_group', [])
-forwarder_dest_group = config.get('forwarder_dest_group', [])
-forwarder_prefix = config.get('forwarder_prefix', [""])
-forwarder_explict = config.get('forwarder_explict', [""])
-forwarder_show_sender = config.get('forwarder_show_sender', False)
+class Config(BaseModel, extra=Extra.ignore):
+    forwarder_source_group: list = []
+    forwarder_dest_group: list = []
+    forwarder_prefix: list = [""]
+    forwarder_explict: list = [""]
+    forwarder_show_sender: str = "none"
+
+    # 重载 Pydantic 的 __init__ 方法，字段不存在时打印warning
+    def __init__(self, **data):
+        super().__init__(**data)
+        for field in self.__fields__.values():
+            if field.name not in data:
+                default_value = getattr(self, field.name)
+                logger.warning(
+                    f"[转发姬] 未发现配置项 {field.name} , 采用默认值: {default_value}")
